@@ -17,7 +17,6 @@ public class Restaurant {
     }
 
     public boolean isRestaurantOpen() {
-        //DELETE ABOVE STATEMENT AND WRITE CODE HERE
         LocalTime now = LocalTime.now();
         boolean isLate = now.isAfter(closingTime);
         boolean isEarly = now.isBefore(openingTime);
@@ -28,15 +27,32 @@ public class Restaurant {
 
     public List<Item> getMenu() {
         return menu;
-        //DELETE ABOVE RETURN STATEMENT AND WRITE CODE HERE
     }
 
-    private Item findItemByName(String itemName){
+    public Item findItemByName(String itemName){
         for(Item item: menu) {
             if(item.getName().equals(itemName))
                 return item;
         }
         return null;
+    }
+
+    public int calculateTotal(String... args) {
+        int index = 0;
+        int total = 0;
+        for (String str : args) {
+            if (menu.get(index).getName() == str) {
+                try {
+                    String getPrice = menu.get(index).toString().trim().split(":", 2)[1];
+                    Integer number = Integer.valueOf(getPrice);
+                    total += number;
+                } catch (NumberFormatException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            index++;
+        }
+        return total;
     }
 
     public void addToMenu(String name, int price) {

@@ -58,9 +58,14 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    // <<<<<<<<<<<<<<<<<<<<TDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    @Test
+    public void order_value_should_be_returned_when_name_of_the_items_given() {
+        int total = restaurant.calculateTotal("Sweet corn soup", "Vegetable lasagne");
+        assertEquals(388, total);
+    }
+
+    // <<<<<<<<<<<<<<<<<<<<TDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
 
-    // <<<<<<<<<<<<<<<<<<<<TDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
-    // <<<<<<<<<<<<<<<<<<<<TDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
